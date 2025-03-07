@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Code, ExternalLink, Moon, Play, User, Mail, Users, Share2, Github, Twitter, Youtube, Eye } from "lucide-react"
+import { AudioVisualizer, CodeTypingEffect } from "./components/hero-animations"
 
 export default function CodeMyVibe() {
   return (
@@ -34,8 +35,8 @@ export default function CodeMyVibe() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-6">
+        <section className="container mx-auto px-4 py-12 md:py-16">
+          <div className="space-y-6 text-center max-w-3xl mx-auto mb-8">
             <p className="text-sm">Welcome to CodeMyVibe</p>
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
               Bringing Your{" "}
@@ -45,7 +46,7 @@ export default function CodeMyVibe() {
               to Life with Code
             </h1>
             <p className="text-lg text-gray-700">Vibe coding. Your intuition, your language, your code</p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center">
               <Link
                 href="/projects"
                 className="inline-flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-50 transition-colors"
@@ -60,15 +61,14 @@ export default function CodeMyVibe() {
               </Link>
             </div>
           </div>
-          <div className="relative">
+          
+          {/* Audio Visualizer */}
+          <AudioVisualizer />
+          
+          {/* Code Typing Animation */}
+          <div className="max-w-3xl mx-auto relative">
             <div className="absolute -inset-4 bg-purple-200 rounded-lg opacity-30 blur-xl"></div>
-            <Image
-              src="/placeholder.svg?height=400&width=500"
-              width={500}
-              height={400}
-              alt="Code editor screenshot"
-              className="rounded-lg relative z-10 w-full"
-            />
+            <CodeTypingEffect />
             <div className="absolute bottom-0 left-0 h-2 w-16 bg-purple-500 rounded-full"></div>
           </div>
         </section>
@@ -377,8 +377,11 @@ export default function CodeMyVibe() {
                     className="w-full p-2 border rounded-md"
                   ></textarea>
                 </div>
-                <button type="submit" className="w-full bg-black text-white py-3 rounded-md font-medium">
-                  Send Message
+                <button 
+                  type="submit" 
+                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-purple-700 text-white px-6 py-3 rounded-md font-medium shadow-md hover:shadow-lg transition-all"
+                >
+                  Send Message <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
             </div>
