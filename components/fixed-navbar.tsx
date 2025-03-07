@@ -4,34 +4,26 @@ import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 export const FixedNavbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+  
+  // After mounting, we can safely show the UI that depends on client-side theme
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   // Check if current path matches the link
   const isActive = (path: string) => {
     return pathname === path;
   };
 
-  // Handle scroll effect, client-side mounting, and initialize theme
+  // Handle scroll effect
   useEffect(() => {
-    setMounted(true);
-    
-    // Initialize dark mode from localStorage or system preference
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove('dark');
-    }
-    
     const handleScroll = () => {
       const offset = window.scrollY;
       if (offset > 50) {
@@ -48,31 +40,15 @@ export const FixedNavbar = () => {
   }, []);
 
   // Toggle theme
-  const toggleDarkMode = () => {
-    const newDarkMode = !isDarkMode;
-    setIsDarkMode(newDarkMode);
-    
-    // Update localStorage
-    localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
-    
-    // Update HTML class
-    if (newDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
   };
-
-  // Prevent hydration errors by ensuring the same render on server and client
-  const themeIcon = mounted ? (
-    isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />
-  ) : null;
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-background/95 backdrop-blur-sm shadow-md py-3 dark:bg-background/90" 
+          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-md py-3" 
           : "bg-transparent py-4"
       }`}
     >
@@ -81,7 +57,7 @@ export const FixedNavbar = () => {
           <div className="bg-gradient-to-br from-purple-400 to-purple-700 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold shadow-md">
             C
           </div>
-          <span className="font-bold text-lg text-foreground">CodeMyVibes</span>
+          <span className="font-bold text-lg dark:text-white">CodeMyVibes</span>
         </Link>
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-6">
@@ -90,7 +66,7 @@ export const FixedNavbar = () => {
               className={`text-sm font-medium transition-colors ${
                 isActive("/projects") 
                   ? "text-purple-600 dark:text-purple-400" 
-                  : "text-foreground hover:text-purple-600 dark:hover:text-purple-400"
+                  : "text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400"
               }`}
             >
               Projects
@@ -100,7 +76,7 @@ export const FixedNavbar = () => {
               className={`text-sm font-medium transition-colors ${
                 isActive("/about") 
                   ? "text-purple-600 dark:text-purple-400" 
-                  : "text-foreground hover:text-purple-600 dark:hover:text-purple-400"
+                  : "text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400"
               }`}
             >
               About
@@ -110,7 +86,7 @@ export const FixedNavbar = () => {
               className={`text-sm font-medium transition-colors ${
                 isActive("/contact") 
                   ? "text-purple-600 dark:text-purple-400" 
-                  : "text-foreground hover:text-purple-600 dark:hover:text-purple-400"
+                  : "text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400"
               }`}
             >
               Contact
@@ -120,19 +96,24 @@ export const FixedNavbar = () => {
               className={`text-sm font-medium transition-colors ${
                 isActive("/") 
                   ? "text-purple-600 dark:text-purple-400" 
-                  : "text-foreground hover:text-purple-600 dark:hover:text-purple-400"
+                  : "text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400"
               }`}
             >
               Home
             </Link>
           </nav>
           <button 
-            className="rounded-full w-8 h-8 flex items-center justify-center hover:bg-muted transition-colors"
-            onClick={toggleDarkMode}
-            aria-label="Toggle dark mode"
+            className="rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
           >
-            {themeIcon}
-            <span className="sr-only">Toggle theme</span>
+            {mounted && (
+              theme === "dark" ? (
+                <Sun className="w-5 h-5 text-yellow-500" />
+              ) : (
+                <Moon className="w-5 h-5" />
+              )
+            )}
           </button>
         </div>
       </div>

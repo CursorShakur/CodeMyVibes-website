@@ -4,8 +4,6 @@ import "./globals.css"
 import { Inter } from "next/font/google"
 import { FixedNavbar } from "@/components/fixed-navbar"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -60,10 +58,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans pt-16 bg-background text-foreground antialiased transition-colors duration-300`}>
-        <FixedNavbar />
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans pt-16`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <FixedNavbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
