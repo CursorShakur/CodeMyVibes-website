@@ -16,9 +16,21 @@ export const FixedNavbar = () => {
     return pathname === path;
   };
 
-  // Handle scroll effect and client-side mounting
+  // Handle scroll effect, client-side mounting, and initialize theme
   useEffect(() => {
     setMounted(true);
+    
+    // Initialize dark mode from localStorage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setIsDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
     
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -35,9 +47,20 @@ export const FixedNavbar = () => {
     };
   }, []);
 
-  // Toggle theme (placeholder for now)
+  // Toggle theme
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    
+    // Update localStorage
+    localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
+    
+    // Update HTML class
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   // Prevent hydration errors by ensuring the same render on server and client
@@ -49,7 +72,7 @@ export const FixedNavbar = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-white/95 backdrop-blur-sm shadow-md py-3" 
+          ? "bg-background/95 backdrop-blur-sm shadow-md py-3 dark:bg-background/90" 
           : "bg-transparent py-4"
       }`}
     >
@@ -58,7 +81,7 @@ export const FixedNavbar = () => {
           <div className="bg-gradient-to-br from-purple-400 to-purple-700 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold shadow-md">
             C
           </div>
-          <span className="font-bold text-lg">CodeMyVibes</span>
+          <span className="font-bold text-lg text-foreground">CodeMyVibes</span>
         </Link>
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-6">
@@ -66,8 +89,8 @@ export const FixedNavbar = () => {
               href="/projects" 
               className={`text-sm font-medium transition-colors ${
                 isActive("/projects") 
-                  ? "text-purple-600" 
-                  : "text-gray-700 hover:text-purple-600"
+                  ? "text-purple-600 dark:text-purple-400" 
+                  : "text-foreground hover:text-purple-600 dark:hover:text-purple-400"
               }`}
             >
               Projects
@@ -76,8 +99,8 @@ export const FixedNavbar = () => {
               href="/about"
               className={`text-sm font-medium transition-colors ${
                 isActive("/about") 
-                  ? "text-purple-600" 
-                  : "text-gray-700 hover:text-purple-600"
+                  ? "text-purple-600 dark:text-purple-400" 
+                  : "text-foreground hover:text-purple-600 dark:hover:text-purple-400"
               }`}
             >
               About
@@ -86,8 +109,8 @@ export const FixedNavbar = () => {
               href="/contact"
               className={`text-sm font-medium transition-colors ${
                 isActive("/contact") 
-                  ? "text-purple-600" 
-                  : "text-gray-700 hover:text-purple-600"
+                  ? "text-purple-600 dark:text-purple-400" 
+                  : "text-foreground hover:text-purple-600 dark:hover:text-purple-400"
               }`}
             >
               Contact
@@ -96,16 +119,17 @@ export const FixedNavbar = () => {
               href="/"
               className={`text-sm font-medium transition-colors ${
                 isActive("/") 
-                  ? "text-purple-600" 
-                  : "text-gray-700 hover:text-purple-600"
+                  ? "text-purple-600 dark:text-purple-400" 
+                  : "text-foreground hover:text-purple-600 dark:hover:text-purple-400"
               }`}
             >
               Home
             </Link>
           </nav>
           <button 
-            className="rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-100 transition-colors"
+            className="rounded-full w-8 h-8 flex items-center justify-center hover:bg-muted transition-colors"
             onClick={toggleDarkMode}
+            aria-label="Toggle dark mode"
           >
             {themeIcon}
             <span className="sr-only">Toggle theme</span>

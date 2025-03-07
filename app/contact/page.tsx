@@ -102,15 +102,15 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-medium mb-4">Connect on Social</h3>
                   <div className="flex gap-4">
-                    <a href="#" className="bg-white p-3 rounded-full shadow-sm hover:shadow-md transition-all">
+                    <a href="#" className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-sm hover:shadow-md transition-all">
                       <Linkedin className="w-5 h-5 text-blue-600" />
                       <span className="sr-only">LinkedIn Profile</span>
                     </a>
-                    <a href="#" className="bg-white p-3 rounded-full shadow-sm hover:shadow-md transition-all">
-                      <Github className="w-5 h-5" />
+                    <a href="#" className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-sm hover:shadow-md transition-all">
+                      <Github className="w-5 h-5 dark:text-gray-200" />
                       <span className="sr-only">GitHub Profile</span>
                     </a>
-                    <a href="#" className="bg-white p-3 rounded-full shadow-sm hover:shadow-md transition-all">
+                    <a href="#" className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-sm hover:shadow-md transition-all">
                       <Twitter className="w-5 h-5 text-blue-400" />
                       <span className="sr-only">Twitter Profile</span>
                     </a>
@@ -119,30 +119,30 @@ export default function ContactPage() {
               </div>
               
               {/* Contact Form */}
-              <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
                 {isSubmitted ? (
                   <div className="text-center py-12">
-                    <div className="bg-purple-100 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                      <MessageSquare className="w-10 h-10 text-purple-600" />
+                    <div className="bg-purple-100 dark:bg-purple-900/30 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                      <MessageSquare className="w-10 h-10 text-purple-600 dark:text-purple-400" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-2">Message Received!</h3>
-                    <p className="text-gray-600 mb-6">
+                    <h3 className="text-2xl font-bold mb-2 dark:text-white">Message Received!</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">
                       Thanks for reaching out. I'll get back to you as soon as possible.
                     </p>
                     <button
                       onClick={() => setIsSubmitted(false)}
-                      className="inline-flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                      className="inline-flex items-center gap-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors dark:text-white"
                     >
                       Send Another Message <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+                    <h2 className="text-2xl font-bold mb-6 dark:text-white">Send a Message</h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           Your Name
                         </label>
                         <input
@@ -152,13 +152,13 @@ export default function ContactPage() {
                           value={formState.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-300 focus:border-purple-500 outline-none transition-colors"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-purple-300 dark:focus:ring-purple-500 focus:border-purple-500 outline-none transition-colors"
                           placeholder="John Doe"
                         />
                       </div>
                       
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                           Email Address
                         </label>
                         <input
@@ -168,14 +168,14 @@ export default function ContactPage() {
                           value={formState.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-300 focus:border-purple-500 outline-none transition-colors"
+                          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-purple-300 dark:focus:ring-purple-500 focus:border-purple-500 outline-none transition-colors"
                           placeholder="john@example.com"
                         />
                       </div>
                     </div>
                     
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Subject
                       </label>
                       <input
@@ -185,13 +185,13 @@ export default function ContactPage() {
                         value={formState.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-300 focus:border-purple-500 outline-none transition-colors"
+                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-purple-300 dark:focus:ring-purple-500 focus:border-purple-500 outline-none transition-colors"
                         placeholder="Project Inquiry"
                       />
                     </div>
                     
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                         Your Message
                       </label>
                       <textarea
@@ -201,7 +201,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-300 focus:border-purple-500 outline-none transition-colors resize-none"
+                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:ring-2 focus:ring-purple-300 dark:focus:ring-purple-500 focus:border-purple-500 outline-none transition-colors resize-none"
                         placeholder="Tell me about your project or question..."
                       ></textarea>
                     </div>
@@ -237,30 +237,30 @@ export default function ContactPage() {
         {/* FAQ Section */}
         <section className="container mx-auto px-4 py-16">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-2xl font-bold mb-8 text-center dark:text-white">Frequently Asked Questions</h2>
             
             <div className="space-y-6">
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                <h3 className="font-bold text-lg mb-2">What services do you offer?</h3>
-                <p className="text-gray-600">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
+                <h3 className="font-bold text-lg mb-2 dark:text-white">What services do you offer?</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   I specialize in web development with a focus on creating intuitive, visually appealing interfaces. 
                   My services include frontend development, creative coding experiments, and helping businesses bring 
                   their digital products to life with a unique vibe.
                 </p>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                <h3 className="font-bold text-lg mb-2">What is vibe coding?</h3>
-                <p className="text-gray-600">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
+                <h3 className="font-bold text-lg mb-2 dark:text-white">What is vibe coding?</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   Vibe coding is an intuitive approach to programming that embraces creativity and feel over rigid structure. 
                   It's about using your intuition and artistic sensibilities to guide coding decisions, resulting in 
                   digital experiences that resonate on an emotional level.
                 </p>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                <h3 className="font-bold text-lg mb-2">How quickly do you respond to inquiries?</h3>
-                <p className="text-gray-600">
+              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
+                <h3 className="font-bold text-lg mb-2 dark:text-white">How quickly do you respond to inquiries?</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   I typically respond to all inquiries within 24-48 hours during business days. For urgent matters, 
                   please indicate this in your message subject and I'll do my best to prioritize your request.
                 </p>

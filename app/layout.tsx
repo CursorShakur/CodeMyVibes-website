@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans pt-16`}>
+      <body className={`${inter.variable} font-sans pt-16 bg-background text-foreground antialiased transition-colors duration-300`}>
         <FixedNavbar />
         {children}
       </body>
