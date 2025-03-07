@@ -90,7 +90,7 @@ export default function ProjectsPage() {
         <div className="bg-gray-50 rounded-lg p-8 text-center max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">Looking for a custom project?</h2>
           <p className="text-gray-700 mb-6">
-            I'm available for freelance work and collaborations. Let's discuss your ideas and bring them to life!
+            Let's discuss your ideas and bring them to life!
           </p>
           <Link
             href="/contact"
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
               <span className="font-bold text-lg">CodeMyVibes</span>
             </div>
             <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} CodeMyVibes. All rights reserved.
+              &copy; {new Date().getFullYear()} CodeMyVibes. All rights reserved.
             </div>
           </div>
         </div>
