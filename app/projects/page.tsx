@@ -22,7 +22,12 @@ export default function ProjectsPage() {
               <ArrowLeft className="w-4 h-4" /> Back to Home
             </Link>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">My Projects</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">
+            My{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">
+              Projects
+            </span>
+          </h1>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl">
             Explore my collection of web applications, creative coding experiments, and development tools. Each project represents my passion for coding and design.
           </p>
