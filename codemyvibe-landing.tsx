@@ -2,6 +2,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Code, ExternalLink, Moon, Play, User, Mail, Users, Share2, Github, Twitter, Youtube, Eye } from "lucide-react"
 import { AudioVisualizer, CodeTypingEffect } from "./components/hero-animations"
+import { ProjectCard } from "@/components/project-card"
+import { projectsData } from "@/app/projects/project-data"
 
 export default function CodeMyVibe() {
   return (
@@ -77,194 +79,21 @@ export default function CodeMyVibe() {
           <p className="text-gray-600 dark:text-gray-400 mb-8">Explore some of my recent work and creative coding experiments.</p>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {/* Project 1 */}
-            <div className="border dark:border-gray-700 rounded-lg overflow-hidden group hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-800">
-              <div className="relative h-48 bg-purple-900">
-                <Image
-                  src="/placeholder.svg?height=200&width=400"
-                  alt="Vibe Music Visualizer"
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            {projectsData
+              .filter(project => project.featured)
+              .slice(0, 3)
+              .map(project => (
+                <ProjectCard
+                  key={project.id}
+                  title={project.title}
+                  description={project.description}
+                  image={project.image}
+                  tags={project.tags}
+                  demoLink={project.demoLink}
+                  codeLink={project.codeLink}
+                  background={project.background}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 to-transparent flex items-end p-4">
-                  <h3 className="text-white font-bold">Vibe Music Visualizer</h3>
-                </div>
-                {/* Quick action buttons overlay */}
-                <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Link href="#" className="bg-white/90 hover:bg-white dark:bg-gray-800/90 dark:hover:bg-gray-800 p-1.5 rounded-full text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors" title="Preview">
-                    <Eye className="w-4 h-4" />
-                  </Link>
-                  <Link href="#" className="bg-white/90 hover:bg-white dark:bg-gray-800/90 dark:hover:bg-gray-800 p-1.5 rounded-full text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors" title="Watch Demo">
-                    <Play className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-              <div className="p-4">
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                  An interactive music visualizer that responds to audio frequencies with vibrant animations.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-gray-100 dark:bg-gray-700 text-xs px-2 py-1 rounded dark:text-gray-300">React</span>
-                  <span className="bg-gray-100 dark:bg-gray-700 text-xs px-2 py-1 rounded dark:text-gray-300">Web Audio API</span>
-                  <span className="bg-gray-100 dark:bg-gray-700 text-xs px-2 py-1 rounded dark:text-gray-300">Canvas</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex gap-2">
-                    <Link href="#" className="flex items-center gap-1 text-xs border dark:border-gray-700 rounded-full px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors dark:text-gray-300">
-                      <Code className="w-3 h-3" /> View Code
-                    </Link>
-                    <Link href="#" className="flex items-center gap-1 text-xs border dark:border-gray-700 rounded-full px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors dark:text-gray-300">
-                      <Play className="w-3 h-3" /> Watch Demo
-                    </Link>
-                  </div>
-                  <div className="relative group/share">
-                    <button className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors dark:text-gray-300">
-                      <Share2 className="w-4 h-4" />
-                    </button>
-                    <div className="absolute right-0 bottom-full mb-2 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-2 hidden group-hover/share:block z-10 w-36 border dark:border-gray-700">
-                      <div className="flex flex-col gap-2 text-sm">
-                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md dark:text-gray-300">
-                          <Twitter className="w-4 h-4 text-blue-400" /> Share on X
-                        </Link>
-                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md dark:text-gray-300">
-                          <Github className="w-4 h-4" /> Star on GitHub
-                        </Link>
-                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md dark:text-gray-300">
-                          <Youtube className="w-4 h-4 text-red-500" /> Watch on YouTube
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 2 */}
-            <div className="border dark:border-gray-700 rounded-lg overflow-hidden group hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-800">
-              <div className="relative h-48 bg-gray-200">
-                <Image
-                  src="/placeholder.svg?height=200&width=400"
-                  alt="Mood Board Generator"
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent flex items-end p-4">
-                  <h3 className="text-white font-bold">Mood Board Generator</h3>
-                </div>
-                {/* Quick action buttons overlay */}
-                <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Link href="#" className="bg-white/90 hover:bg-white dark:bg-gray-800/90 dark:hover:bg-gray-800 p-1.5 rounded-full text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors" title="Preview">
-                    <Eye className="w-4 h-4" />
-                  </Link>
-                  <Link href="#" className="bg-white/90 hover:bg-white dark:bg-gray-800/90 dark:hover:bg-gray-800 p-1.5 rounded-full text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors" title="Watch Demo">
-                    <Play className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-              <div className="p-4">
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                  AI-powered tool that creates personalized mood boards based on text descriptions.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-gray-100 dark:bg-gray-700 text-xs px-2 py-1 rounded dark:text-gray-300">Next.js</span>
-                  <span className="bg-gray-100 dark:bg-gray-700 text-xs px-2 py-1 rounded dark:text-gray-300">OpenAI</span>
-                  <span className="bg-gray-100 dark:bg-gray-700 text-xs px-2 py-1 rounded dark:text-gray-300">Tailwind CSS</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex gap-2">
-                    <Link href="#" className="flex items-center gap-1 text-xs border dark:border-gray-700 rounded-full px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors dark:text-gray-300">
-                      <Code className="w-3 h-3" /> View Code
-                    </Link>
-                    <Link href="#" className="flex items-center gap-1 text-xs border dark:border-gray-700 rounded-full px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors dark:text-gray-300">
-                      <Play className="w-3 h-3" /> Watch Demo
-                    </Link>
-                  </div>
-                  <div className="relative group/share">
-                    <button className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors dark:text-gray-300">
-                      <Share2 className="w-4 h-4" />
-                    </button>
-                    <div className="absolute right-0 bottom-full mb-2 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-2 hidden group-hover/share:block z-10 w-36 border dark:border-gray-700">
-                      <div className="flex flex-col gap-2 text-sm">
-                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md dark:text-gray-300">
-                          <Twitter className="w-4 h-4 text-blue-400" /> Share on X
-                        </Link>
-                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md dark:text-gray-300">
-                          <Github className="w-4 h-4" /> Star on GitHub
-                        </Link>
-                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md dark:text-gray-300">
-                          <Youtube className="w-4 h-4 text-red-500" /> Watch on YouTube
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 3 */}
-            <div className="border dark:border-gray-700 rounded-lg overflow-hidden group hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-800">
-              <div className="relative h-48 bg-blue-100">
-                <Image
-                  src="/placeholder.svg?height=200&width=400"
-                  alt="Interactive Portfolio"
-                  width={400}
-                  height={200}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent flex items-end p-4">
-                  <h3 className="text-white font-bold">Interactive Portfolio</h3>
-                </div>
-                {/* Quick action buttons overlay */}
-                <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Link href="#" className="bg-white/90 hover:bg-white dark:bg-gray-800/90 dark:hover:bg-gray-800 p-1.5 rounded-full text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors" title="Preview">
-                    <Eye className="w-4 h-4" />
-                  </Link>
-                  <Link href="#" className="bg-white/90 hover:bg-white dark:bg-gray-800/90 dark:hover:bg-gray-800 p-1.5 rounded-full text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors" title="Watch Demo">
-                    <Play className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-              <div className="p-4">
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                  A dynamic portfolio website with playful animations and interactive elements.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-gray-100 dark:bg-gray-700 text-xs px-2 py-1 rounded dark:text-gray-300">TypeScript</span>
-                  <span className="bg-gray-100 dark:bg-gray-700 text-xs px-2 py-1 rounded dark:text-gray-300">Three.js</span>
-                  <span className="bg-gray-100 dark:bg-gray-700 text-xs px-2 py-1 rounded dark:text-gray-300">GSAP</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex gap-2">
-                    <Link href="#" className="flex items-center gap-1 text-xs border dark:border-gray-700 rounded-full px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors dark:text-gray-300">
-                      <Code className="w-3 h-3" /> View Code
-                    </Link>
-                    <Link href="#" className="flex items-center gap-1 text-xs border dark:border-gray-700 rounded-full px-3 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors dark:text-gray-300">
-                      <Play className="w-3 h-3" /> Watch Demo
-                    </Link>
-                  </div>
-                  <div className="relative group/share">
-                    <button className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors dark:text-gray-300">
-                      <Share2 className="w-4 h-4" />
-                    </button>
-                    <div className="absolute right-0 bottom-full mb-2 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-2 hidden group-hover/share:block z-10 w-36 border dark:border-gray-700">
-                      <div className="flex flex-col gap-2 text-sm">
-                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md dark:text-gray-300">
-                          <Twitter className="w-4 h-4 text-blue-400" /> Share on X
-                        </Link>
-                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md dark:text-gray-300">
-                          <Github className="w-4 h-4" /> Star on GitHub
-                        </Link>
-                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md dark:text-gray-300">
-                          <Youtube className="w-4 h-4 text-red-500" /> Watch on YouTube
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              ))}
           </div>
         </section>
 
