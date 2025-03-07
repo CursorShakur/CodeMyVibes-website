@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 export const FixedNavbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   
   // Check if current path matches the link
@@ -15,8 +16,10 @@ export const FixedNavbar = () => {
     return pathname === path;
   };
 
-  // Handle scroll effect
+  // Handle scroll effect and client-side mounting
   useEffect(() => {
+    setMounted(true);
+    
     const handleScroll = () => {
       const offset = window.scrollY;
       if (offset > 50) {
@@ -36,6 +39,11 @@ export const FixedNavbar = () => {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
+
+  // Prevent hydration errors by ensuring the same render on server and client
+  const themeIcon = mounted ? (
+    isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />
+  ) : null;
 
   return (
     <header 
@@ -84,16 +92,22 @@ export const FixedNavbar = () => {
             >
               Contact
             </Link>
+            <Link
+              href="/"
+              className={`text-sm font-medium transition-colors ${
+                isActive("/") 
+                  ? "text-purple-600" 
+                  : "text-gray-700 hover:text-purple-600"
+              }`}
+            >
+              Home
+            </Link>
           </nav>
           <button 
             className="rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-100 transition-colors"
             onClick={toggleDarkMode}
           >
-            {isDarkMode ? (
-              <Sun className="w-5 h-5" />
-            ) : (
-              <Moon className="w-5 h-5" />
-            )}
+            {themeIcon}
             <span className="sr-only">Toggle theme</span>
           </button>
         </div>
