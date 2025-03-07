@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMyVibe Preview</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #a855f7, #9333ea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, #a855f7, #9333ea);
+        }
+        .gradient-border {
+            border-image: linear-gradient(90deg, #d8b4fe, #a855f7) 1;
+        }
+        .hero-glow {
+            background: rgba(216, 180, 254, 0.3);
+            filter: blur(40px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+    <!-- Header -->
+    <header class="container mx-auto flex items-center justify-between py-4 px-4">
+        <a href="#" class="flex items-center gap-2">
+            <div class="gradient-bg rounded-full w-8 h-8 flex items-center justify-center text-white font-bold shadow-md">
+                C
+            </div>
+            <span class="font-bold text-lg">CodeMyVibe</span>
+        </a>
+        <div class="flex items-center gap-6">
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="#" class="text-sm font-medium">Projects</a>
+                <a href="#" class="text-sm font-medium">About</a>
+                <a href="#" class="text-sm font-medium">Contact</a>
+            </nav>
+            <button class="rounded-full w-8 h-8 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <span class="sr-only">Toggle theme</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <p class="text-sm">Welcome to CodeMyVibe</p>
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
+                    Bringing Your 
+                    <span class="gradient-text">Visions</span> 
+                    to Life with Code
+                </h1>
+                <p class="text-lg text-gray-700">Vibe coding. Your intuition, your language, your code</p>
+                <div class="flex gap-4">
+                    <a href="#" class="inline-flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-50 transition-colors">
+                        View Projects 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#" class="inline-flex items-center gap-2 gradient-bg text-white px-6 py-2 rounded-md font-medium shadow-md hover:shadow-lg transition-all">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-4 hero-glow rounded-lg"></div>
+                <div class="bg-gray-200 rounded-lg relative z-10 w-full h-64 md:h-96 flex items-center justify-center">
+                    <span class="text-gray-500">Image Placeholder</span>
+                </div>
+                <div class="absolute bottom-0 left-0 h-2 w-16 gradient-bg rounded-full"></div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="container mx-auto px-4 py-8">
+            <div class="bg-gray-50 rounded-lg p-8 relative border-2 gradient-border shadow-md">
+                <div class="text-7xl gradient-text absolute top-4 left-6 font-serif">
+                    "
+                </div>
+                <div class="space-y-4 pt-6">
+                    <p class="text-gray-700 font-medium">
+                        "There's a new kind of coding I call 'vibe coding,' where you fully give in to the vibes, embrace
+                        exponentials, and forget that the code even exists. It's possible because the LLMs ... are getting too
+                        good."
+                    </p>
+                    <p class="text-gray-700 font-medium">
+                        "I just see stuff, say stuff, run stuff, and copy-paste stuff, and it mostly works."
+                    </p>
+                    <p class="text-sm text-gray-500 italic">- Andrej Karpathy</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="container mx-auto px-4 py-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Featured Projects</h2>
+                <a href="#" class="text-sm flex items-center gap-1">
+                    View All Projects 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-gray-600 mb-8">Explore some of my recent work and creative coding experiments.</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Project cards - showing just one as example -->
+                <div class="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div class="relative h-48 bg-purple-900">
+                        <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                            <span class="text-gray-500">Image Placeholder</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent flex items-end p-4">
+                            <h3 class="text-white font-bold">Vibe Music Visualizer</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-sm text-gray-600 mb-4">
+                            An interactive music visualizer that responds to audio frequencies with vibrant animations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-xs px-2 py-1 rounded">React</span>
+                            <span class="bg-gray-100 text-xs px-2 py-1 rounded">Web Audio API</span>
+                            <span class="bg-gray-100 text-xs px-2 py-1 rounded">Canvas</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- More project cards would go here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="container mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold">
+                        Have a project in mind?
+                        <br />
+                        <span class="gradient-text font-extrabold">
+                            Let's bring it to life
+                        </span>
+                    </h2>
+                    <p class="text-gray-600">
+                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border shadow-sm">
+                    <h3 class="text-lg font-medium mb-4">Project Request</h3>
+                    <p class="text-sm text-gray-600 mb-6">This is a preview of the contact form.</p>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm mb-1">Name</label>
+                            <input type="text" placeholder="Your name" class="w-full p-2 border rounded-md" />
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-1">Email</label>
+                            <input type="email" placeholder="Your email" class="w-full p-2 border rounded-md" />
+                        </div>
+                        <button type="button" class="w-full gradient-bg text-white py-3 rounded-md font-medium">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-sm text-gray-600">© 2025 CodeMyVibe. All rights reserved.</p>
+                <p class="text-sm text-gray-500 mt-2">This is a static preview of the CodeMyVibe website.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
