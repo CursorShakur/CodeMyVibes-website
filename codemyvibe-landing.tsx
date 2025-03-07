@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Code, ExternalLink, Moon, Play, User, Mail, Users } from "lucide-react"
+import { ArrowRight, Code, ExternalLink, Moon, Play, User, Mail, Users, Share2, Github, Twitter, Youtube, Eye } from "lucide-react"
 
 export default function CodeMyVibe() {
   return (
@@ -97,7 +97,7 @@ export default function CodeMyVibe() {
         <section className="container mx-auto px-4 py-12">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold">Featured Projects</h2>
-            <Link href="/projects" className="text-sm flex items-center gap-1">
+            <Link href="/projects" className="text-sm flex items-center gap-1 hover:text-purple-600 transition-colors">
               View All Projects <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -105,17 +105,26 @@ export default function CodeMyVibe() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Project 1 */}
-            <div className="border rounded-lg overflow-hidden">
+            <div className="border rounded-lg overflow-hidden group hover:shadow-lg transition-all duration-300">
               <div className="relative h-48 bg-purple-900">
                 <Image
                   src="/placeholder.svg?height=200&width=400"
                   alt="Vibe Music Visualizer"
                   width={400}
                   height={200}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 to-transparent flex items-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 to-transparent flex items-end p-4">
                   <h3 className="text-white font-bold">Vibe Music Visualizer</h3>
+                </div>
+                {/* Quick action buttons overlay */}
+                <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Link href="#" className="bg-white/90 hover:bg-white p-1.5 rounded-full text-gray-700 hover:text-purple-600 transition-colors" title="Preview">
+                    <Eye className="w-4 h-4" />
+                  </Link>
+                  <Link href="#" className="bg-white/90 hover:bg-white p-1.5 rounded-full text-gray-700 hover:text-purple-600 transition-colors" title="Watch Demo">
+                    <Play className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
               <div className="p-4">
@@ -127,32 +136,58 @@ export default function CodeMyVibe() {
                   <span className="bg-gray-100 text-xs px-2 py-1 rounded">Web Audio API</span>
                   <span className="bg-gray-100 text-xs px-2 py-1 rounded">Canvas</span>
                 </div>
-                <div className="flex gap-2">
-                  <Link href="#" className="flex items-center gap-1 text-xs border rounded px-2 py-1">
-                    <User className="w-3 h-3" /> Demo
-                  </Link>
-                  <Link href="#" className="flex items-center gap-1 text-xs border rounded px-2 py-1">
-                    <Code className="w-3 h-3" /> Code
-                  </Link>
-                  <Link href="#" className="flex items-center gap-1 text-xs border rounded px-2 py-1">
-                    <Play className="w-3 h-3" /> Video
-                  </Link>
+                <div className="flex justify-between items-center">
+                  <div className="flex gap-2">
+                    <Link href="#" className="flex items-center gap-1 text-xs border rounded-full px-3 py-1.5 hover:bg-gray-50 transition-colors">
+                      <Code className="w-3 h-3" /> View Code
+                    </Link>
+                    <Link href="#" className="flex items-center gap-1 text-xs border rounded-full px-3 py-1.5 hover:bg-gray-50 transition-colors">
+                      <Play className="w-3 h-3" /> Watch Demo
+                    </Link>
+                  </div>
+                  <div className="relative group/share">
+                    <button className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 transition-colors">
+                      <Share2 className="w-4 h-4" />
+                    </button>
+                    <div className="absolute right-0 bottom-full mb-2 bg-white shadow-lg rounded-lg p-2 hidden group-hover/share:block z-10 w-36">
+                      <div className="flex flex-col gap-2 text-sm">
+                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded-md">
+                          <Twitter className="w-4 h-4 text-blue-400" /> Share on X
+                        </Link>
+                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded-md">
+                          <Github className="w-4 h-4" /> Star on GitHub
+                        </Link>
+                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded-md">
+                          <Youtube className="w-4 h-4 text-red-500" /> Watch on YouTube
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Project 2 */}
-            <div className="border rounded-lg overflow-hidden">
+            <div className="border rounded-lg overflow-hidden group hover:shadow-lg transition-all duration-300">
               <div className="relative h-48 bg-gray-200">
                 <Image
                   src="/placeholder.svg?height=200&width=400"
                   alt="Mood Board Generator"
                   width={400}
                   height={200}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent flex items-end p-4">
                   <h3 className="text-white font-bold">Mood Board Generator</h3>
+                </div>
+                {/* Quick action buttons overlay */}
+                <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Link href="#" className="bg-white/90 hover:bg-white p-1.5 rounded-full text-gray-700 hover:text-purple-600 transition-colors" title="Preview">
+                    <Eye className="w-4 h-4" />
+                  </Link>
+                  <Link href="#" className="bg-white/90 hover:bg-white p-1.5 rounded-full text-gray-700 hover:text-purple-600 transition-colors" title="Watch Demo">
+                    <Play className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
               <div className="p-4">
@@ -164,32 +199,58 @@ export default function CodeMyVibe() {
                   <span className="bg-gray-100 text-xs px-2 py-1 rounded">OpenAI</span>
                   <span className="bg-gray-100 text-xs px-2 py-1 rounded">Tailwind CSS</span>
                 </div>
-                <div className="flex gap-2">
-                  <Link href="#" className="flex items-center gap-1 text-xs border rounded px-2 py-1">
-                    <User className="w-3 h-3" /> Demo
-                  </Link>
-                  <Link href="#" className="flex items-center gap-1 text-xs border rounded px-2 py-1">
-                    <Code className="w-3 h-3" /> Code
-                  </Link>
-                  <Link href="#" className="flex items-center gap-1 text-xs border rounded px-2 py-1">
-                    <Play className="w-3 h-3" /> Video
-                  </Link>
+                <div className="flex justify-between items-center">
+                  <div className="flex gap-2">
+                    <Link href="#" className="flex items-center gap-1 text-xs border rounded-full px-3 py-1.5 hover:bg-gray-50 transition-colors">
+                      <Code className="w-3 h-3" /> View Code
+                    </Link>
+                    <Link href="#" className="flex items-center gap-1 text-xs border rounded-full px-3 py-1.5 hover:bg-gray-50 transition-colors">
+                      <Play className="w-3 h-3" /> Watch Demo
+                    </Link>
+                  </div>
+                  <div className="relative group/share">
+                    <button className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 transition-colors">
+                      <Share2 className="w-4 h-4" />
+                    </button>
+                    <div className="absolute right-0 bottom-full mb-2 bg-white shadow-lg rounded-lg p-2 hidden group-hover/share:block z-10 w-36">
+                      <div className="flex flex-col gap-2 text-sm">
+                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded-md">
+                          <Twitter className="w-4 h-4 text-blue-400" /> Share on X
+                        </Link>
+                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded-md">
+                          <Github className="w-4 h-4" /> Star on GitHub
+                        </Link>
+                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded-md">
+                          <Youtube className="w-4 h-4 text-red-500" /> Watch on YouTube
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Project 3 */}
-            <div className="border rounded-lg overflow-hidden">
+            <div className="border rounded-lg overflow-hidden group hover:shadow-lg transition-all duration-300">
               <div className="relative h-48 bg-blue-100">
                 <Image
                   src="/placeholder.svg?height=200&width=400"
                   alt="Interactive Portfolio"
                   width={400}
                   height={200}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent flex items-end p-4">
                   <h3 className="text-white font-bold">Interactive Portfolio</h3>
+                </div>
+                {/* Quick action buttons overlay */}
+                <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Link href="#" className="bg-white/90 hover:bg-white p-1.5 rounded-full text-gray-700 hover:text-purple-600 transition-colors" title="Preview">
+                    <Eye className="w-4 h-4" />
+                  </Link>
+                  <Link href="#" className="bg-white/90 hover:bg-white p-1.5 rounded-full text-gray-700 hover:text-purple-600 transition-colors" title="Watch Demo">
+                    <Play className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
               <div className="p-4">
@@ -201,16 +262,33 @@ export default function CodeMyVibe() {
                   <span className="bg-gray-100 text-xs px-2 py-1 rounded">Three.js</span>
                   <span className="bg-gray-100 text-xs px-2 py-1 rounded">GSAP</span>
                 </div>
-                <div className="flex gap-2">
-                  <Link href="#" className="flex items-center gap-1 text-xs border rounded px-2 py-1">
-                    <User className="w-3 h-3" /> Demo
-                  </Link>
-                  <Link href="#" className="flex items-center gap-1 text-xs border rounded px-2 py-1">
-                    <Code className="w-3 h-3" /> Code
-                  </Link>
-                  <Link href="#" className="flex items-center gap-1 text-xs border rounded px-2 py-1">
-                    <Play className="w-3 h-3" /> Video
-                  </Link>
+                <div className="flex justify-between items-center">
+                  <div className="flex gap-2">
+                    <Link href="#" className="flex items-center gap-1 text-xs border rounded-full px-3 py-1.5 hover:bg-gray-50 transition-colors">
+                      <Code className="w-3 h-3" /> View Code
+                    </Link>
+                    <Link href="#" className="flex items-center gap-1 text-xs border rounded-full px-3 py-1.5 hover:bg-gray-50 transition-colors">
+                      <Play className="w-3 h-3" /> Watch Demo
+                    </Link>
+                  </div>
+                  <div className="relative group/share">
+                    <button className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 transition-colors">
+                      <Share2 className="w-4 h-4" />
+                    </button>
+                    <div className="absolute right-0 bottom-full mb-2 bg-white shadow-lg rounded-lg p-2 hidden group-hover/share:block z-10 w-36">
+                      <div className="flex flex-col gap-2 text-sm">
+                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded-md">
+                          <Twitter className="w-4 h-4 text-blue-400" /> Share on X
+                        </Link>
+                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded-md">
+                          <Github className="w-4 h-4" /> Star on GitHub
+                        </Link>
+                        <Link href="#" className="flex items-center gap-2 p-1.5 hover:bg-gray-50 rounded-md">
+                          <Youtube className="w-4 h-4 text-red-500" /> Watch on YouTube
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -354,11 +432,10 @@ export default function CodeMyVibe() {
             </div>
           </div>
           <div className="border-t mt-8 pt-8 text-center">
-            <p className="text-sm text-gray-600">© 2025 CodeMyVibe. All rights reserved.</p>
+            <p className="text-sm text-gray-600"> 2025 CodeMyVibe. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
   )
 }
-
