@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle with Gradient -->
+  <circle cx="100" cy="100" r="95" fill="url(#gradient)" />
+  
+  <!-- Code Brackets -->
+  <path d="M70 60L40 100L70 140" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 60L160 100L130 140" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Music Wave -->
+  <path d="M90 80Q100 60 110 80Q120 100 130 80" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <path d="M70 100Q80 80 90 100Q100 120 110 100" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <path d="M90 120Q100 100 110 120Q120 140 130 120" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" style="stop-color:#9333EA"/>
+      <stop offset="50%" style="stop-color:#E879F9"/>
+      <stop offset="100%" style="stop-color:#2563EB"/>
+    </linearGradient>
+  </defs>
+</svg> 

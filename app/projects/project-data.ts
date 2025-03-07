@@ -26,7 +26,7 @@ export const projectsData: Project[] = [
     id: "codemyvibes-website",
     title: "CodeMyVibes Website",
     description: "A modern portfolio website built with Next.js and TailwindCSS, featuring dark mode, responsive design, and smooth animations.",
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/codemyvibes-home.png",
     tags: ["Next.js", "TailwindCSS", "TypeScript", "React"],
     demoLink: "https://codemyvibes.vercel.app",
     codeLink: "https://github.com/CursorShakur/CodeMyVibes-website",
