@@ -11,33 +11,7 @@ export const metadata = {
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="container mx-auto flex items-center justify-between py-4 px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="bg-gradient-to-br from-purple-400 to-purple-700 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold shadow-md">
-            C
-          </div>
-          <span className="font-bold text-lg">CodeMyVibes</span>
-        </Link>
-        <div className="flex items-center gap-6">
-          <nav className="hidden md:flex items-center gap-6">
-            <Link href="/projects" className="text-sm font-medium text-purple-600">
-              Projects
-            </Link>
-            <Link href="/about" className="text-sm font-medium">
-              About
-            </Link>
-            <Link href="/contact" className="text-sm font-medium">
-              Contact
-            </Link>
-          </nav>
-          <button className="rounded-full w-8 h-8 flex items-center justify-center">
-            <span className="sr-only">Toggle theme</span>
-          </button>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 mt-16">
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-2">

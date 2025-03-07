@@ -6,36 +6,9 @@ import { AudioVisualizer, CodeTypingEffect } from "./components/hero-animations"
 export default function CodeMyVibe() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="container mx-auto flex items-center justify-between py-4 px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="bg-gradient-to-br from-purple-400 to-purple-700 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold shadow-md">
-            C
-          </div>
-          <span className="font-bold text-lg">CodeMyVibe</span>
-        </Link>
-        <div className="flex items-center gap-6">
-          <nav className="hidden md:flex items-center gap-6">
-            <Link href="/projects" className="text-sm font-medium">
-              Projects
-            </Link>
-            <Link href="/about" className="text-sm font-medium">
-              About
-            </Link>
-            <Link href="/contact" className="text-sm font-medium">
-              Contact
-            </Link>
-          </nav>
-          <button className="rounded-full w-8 h-8 flex items-center justify-center">
-            <Moon className="w-5 h-5" />
-            <span className="sr-only">Toggle theme</span>
-          </button>
-        </div>
-      </header>
-
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-12 md:py-16">
+        <section className="container mx-auto px-4 py-12 md:py-16 mt-16">
           <div className="space-y-6 text-center max-w-3xl mx-auto mb-8">
             <p className="text-sm">Welcome to CodeMyVibe</p>
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">

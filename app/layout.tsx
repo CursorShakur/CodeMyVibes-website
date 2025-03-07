@@ -1,6 +1,7 @@
 import type React from "react"
 import "./globals.css"
 import { Inter } from "next/font/google"
+import { FixedNavbar } from "@/components/fixed-navbar"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,7 +11,7 @@ const inter = Inter({
 export const metadata = {
   title: "CodeMyVibe - Bringing Your Visions to Life with Code",
   description: "Creating vibrant, innovative projects with a unique coding style.",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -20,11 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans`}>{children}</body>
+      <body className={`${inter.variable} font-sans pt-16`}>
+        <FixedNavbar />
+        {children}
+      </body>
     </html>
   )
 }
-
-
-
-import './globals.css'
