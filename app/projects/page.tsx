@@ -1,14 +1,27 @@
+"use client";
+
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { projectsData } from "./project-data";
 import { ProjectCard } from "../../components/project-card";
+import { useState } from "react";
 
-export const metadata = {
-  title: "Projects | CodeMyVibes",
-  description: "Explore my coding projects and creative experiments",
-};
+// Define categories based on all unique tags
+const allTags = Array.from(
+  new Set(projectsData.flatMap((project) => project.tags))
+).sort();
+
+const categories = ["All Projects", ...allTags];
 
 export default function ProjectsPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All Projects");
+
+  const filteredProjects = projectsData.filter((project) =>
+    selectedCategory === "All Projects"
+      ? true
+      : project.tags.includes(selectedCategory)
+  );
+
   return (
     <div className="min-h-screen">
       <main className="container mx-auto px-4 py-8 mt-16">
@@ -35,23 +48,24 @@ export default function ProjectsPage() {
 
         {/* Filters */}
         <div className="mb-8 flex flex-wrap gap-2">
-          <button className="bg-purple-600 text-white px-4 py-1.5 rounded-full text-sm">
-            All Projects
-          </button>
-          <button className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-4 py-1.5 rounded-full text-sm hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors dark:text-white">
-            Web Apps
-          </button>
-          <button className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-4 py-1.5 rounded-full text-sm hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors dark:text-white">
-            Creative Coding
-          </button>
-          <button className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-4 py-1.5 rounded-full text-sm hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors dark:text-white">
-            Tools
-          </button>
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-1.5 rounded-full text-sm transition-colors ${
+                selectedCategory === category
+                  ? "bg-purple-600 text-white"
+                  : "bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-white"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {projectsData.map((project) => (
+          {filteredProjects.map((project) => (
             <ProjectCard
               key={project.id}
               title={project.title}
@@ -64,6 +78,15 @@ export default function ProjectsPage() {
             />
           ))}
         </div>
+
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-600 dark:text-gray-400">
+              No projects found for the selected category.
+            </p>
+          </div>
+        )}
 
         {/* Contact CTA */}
         <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 text-center max-w-3xl mx-auto">
