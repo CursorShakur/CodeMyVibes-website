@@ -91,6 +91,16 @@ export const FixedNavbar = () => {
             >
               Contact
             </Link>
+            <Link
+              href="/"
+              className={`text-sm font-medium transition-colors ${
+                isActive("/") 
+                  ? "text-purple-600 dark:text-purple-400" 
+                  : "text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400"
+              }`}
+            >
+              Home
+            </Link>
           </nav>
           <button 
             className="rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"

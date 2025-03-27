@@ -1,0 +1,7 @@
+[33med64e18[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mupdated-website[m[33m, [m[1;31morigin/updated-website[m[33m)[m feat: Add SEO improvements and site enhancements (robots.txt, sitemap.xml, custom pages, meta tags, loading states, logo)
+[33mabc1099[m Refactor: Use shared ProjectCard component in landing page
+[33m63425c6[m Fix metadata export in projects page and update project data
+[33m8cbf4f4[m Update projects page title with gradient effect and improve dark mode styling
+[33m36f540e[m Add dark mode support and fix button contrast issues
+[33m8819758[m Add Home button to navbar and fix hydration error
+[33me7e5cbb[m Add About and Contact pages with vibe coding theme
